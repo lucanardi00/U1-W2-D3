@@ -136,20 +136,20 @@ console.log(femaleCharacters)
   Crea un oggetto "eyeColor" che abbia le seguenti proprietà: blue, yellow, brown, red, blue-gray.
   Ad ognuna di queste proprietà assegna come valore un array vuoto.
 */
-const eyeColor = [
-  {
-    blue: [],
-    yellow: [],
-    brown: [],
-    red: [],
-    'blue-gray': [],
-  },
-]
+const eyeColor = {
+  blue: [],
+  yellow: [],
+  brown: [],
+  red: [],
+  'blue-gray': [],
+}
+
 /* ESERCIZIO 5
   Utilizza uno switch statement per inserire uno ad uno gli oggetti dei personaggi di "starWarsCharacters" negli array relativi al colore degli occhi precedentemente creati.
   Ogni personaggio dovrà finire nell'array corrispondente al suo colore degli occhi (al valore della sua proprietà "eye_color").
 */
-/*for (let i = 0; i < starWarsCharacters.length; i++) {
+
+for (let i = 0; i < starWarsCharacters.length; i++) {
   switch (starWarsCharacters[i].eye_color) {
     case 'blue':
       eyeColor.blue.push(starWarsCharacters[i])
@@ -166,11 +166,11 @@ const eyeColor = [
     case 'blue-gray':
       eyeColor['blue-gray'].push(starWarsCharacters[i])
       break
-    default:
-      break
   }
 }
-*/
+
+console.log(eyeColor)
+
 /* ESERCIZIO 6
   Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
 */
@@ -205,7 +205,7 @@ if (crewMass < 500) {
   console.log('Warning: Load is over 700')
 } else if (crewMass > 900 && crewMass < 1000) {
   console.log('Critical Load: Over 900')
-} else if (crewMass > 1000) {
+} else {
   console.log('DANGER! OVERLOAD ALERT: escape from ship now!')
 }
 
@@ -227,20 +227,44 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
   Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
 */
 
-for (let i = 0; i < charactersNames.length - 1; i++) {
-  if (charactersNames.includes(femaleCharacters[i])) {
-    charactersNames.splice(0, femaleCharacters[i])
+for (let i = 0; i < charactersNames.length; i++) {
+  for (let j = 0; j < femaleCharacters.length; j++) {
+    if (charactersNames[i] === femaleCharacters[j].name) {
+      charactersNames.splice(i, 1)
+    }
   }
 }
+
 console.log(charactersNames)
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
 let i = 10
+let x
 
 if (i > starWarsCharacters.length - 1) {
   i = Math.random()
   i = i * 10
-  let x = Math.round(i)
+  x = Math.round(i)
   console.log(x)
 }
+
+console.log(
+  'Il nome del personaggio è ',
+  starWarsCharacters[x].name,
+  'ed è alto ',
+  starWarsCharacters[x].height,
+  ',ha una massa di ',
+  starWarsCharacters[x].mass,
+  ', ha i capelli di colore ',
+  starWarsCharacters[x].hair_color,
+  ', il suo colore della pelle è ',
+  starWarsCharacters[x].skin_color,
+  ', ha gli occhi di colore ',
+  starWarsCharacters[x].eye_color,
+  ", è nato nell'anno ",
+  starWarsCharacters[x].birth_year,
+  ' ed il suo sesso è ',
+  starWarsCharacters[x].gender,
+  '.'
+)
